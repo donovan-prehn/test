@@ -17,10 +17,10 @@ jobs:
           mkdir /home/runner
           chown runner:runner /home/runner
           echo "runner ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
-      - name: create package
-        user: runner
-        workdir: /home/runner
-        run: |
-          ls -al
+      # - name: create package
+      #   user: runner
+      #   workdir: /home/runner
+      #   run: |
+      #     ls -al
 
 
