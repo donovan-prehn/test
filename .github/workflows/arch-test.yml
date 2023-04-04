@@ -3,25 +3,18 @@ name: Hello world
 on: [push]
 
 jobs:
- hello_world_job:
+  hello_world_job:
     runs-on: ubuntu-latest
     name: A job to say hello
-    container:
-      image: archlinux:latest
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-    - name: asdf
-      run: ls -la && uname -a
-  hello_world_job_using_action:
-    runs-on: ubuntu-latest
-    name: A job to say hello using action
     steps:
       - name: Hello world action step
         id: hello
-        uses: donovan-prehn/test/hello-world-docker-action
+        uses: donovan-prehn/test
         with:
           who-to-greet: 'Mona the Octocat'
+      # Use the output from the `hello` step
+      - name: Get the output time
+        run: echo "The time was ${{ steps.hello.outputs.time }}"
       # Use the output from the `hello` step
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"
