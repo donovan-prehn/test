@@ -2,6 +2,8 @@
 FROM archlinux:latest
 
 COPY ./entrypoint.sh /entrypoint.sh
+COPY . .
+RUN ls -la
 RUN chmod +rwx /entrypoint.sh
 #Add a user with userid 8877 and name nonroot
 RUN useradd -m archie

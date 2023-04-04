@@ -3,27 +3,35 @@ name: Hello world
 on: [push]
 
 jobs:
-  hello_world_job:
-    runs-on: ubuntu-latest
-    name: A job to say hello
-    container:
-      image: archlinux:latest
-    steps:
+  steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: setup user
-        run: |
-          useradd runner
-          mkdir /home/runner
-          chown runner:runner /home/runner
-          echo "runner ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
-      - name: blah blah
-        run: |
-          set -x
-          cat /etc/passwd
-          echo "I am $(whoami)"
-          su - runner
-          echo "I am $(whoami)"
+      - name: Hello world action step
+        uses: ./cool-arch-action # Uses an action in the root directory
+        id: hello
+        with:
+          who-to-greet: 'Mona the Octocat'
+  # hello_world_job:
+  #   runs-on: ubuntu-latest
+  #   name: A job to say hello
+  #   container:
+  #     image: archlinux:latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v3
+  #     - name: setup user
+  #       run: |
+  #         useradd -s /bin/bash runner
+  #         mkdir /home/runner
+  #         chown runner:runner /home/runner
+  #         echo "runner ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+  #     - name: blah blah
+  #       run: |
+  #         set -x
+  #         cat /etc/passwd
+  #         echo "I am $(whoami)"
+  #         su -runner
+  #         echo "I am $(whoami)"
       # - name: create package
       #   user: runner
       #   workdir: /home/runner
