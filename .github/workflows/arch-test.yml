@@ -17,6 +17,12 @@ jobs:
           mkdir /home/runner
           chown runner:runner /home/runner
           echo "runner ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+      - name: blah blah
+        run: |
+          cat /etc/passwd
+          echo "I am $(whoami)"
+          su runner
+          echo "I am $(whoami)"
       # - name: create package
       #   user: runner
       #   workdir: /home/runner
