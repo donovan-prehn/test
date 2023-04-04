@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     name: A job to say hello
     container:
-      image: archlinux-latest
+      image: archlinux:latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
