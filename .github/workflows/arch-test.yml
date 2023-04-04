@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Hello world action step
         id: hello
-        uses: donovan-prehn/test
+        uses: donovan-prehn/test@v1
         with:
           who-to-greet: 'Mona the Octocat'
       # Use the output from the `hello` step
