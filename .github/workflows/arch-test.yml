@@ -9,6 +9,8 @@ jobs:
     container:
       image: archlinux:latest
     steps:
+    - name: Checkout
+      uses: actions/checkout@v3
     - name: asdf
       run: ls -la && uname -a
   hello_world_job_using_action:
