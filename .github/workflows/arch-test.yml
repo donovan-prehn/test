@@ -15,7 +15,7 @@ jobs:
       run: ls -la && uname -a
   hello_world_job_using_action:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: A job to say hello using action
     steps:
       - name: Hello world action step
         id: hello
