@@ -6,14 +6,20 @@ jobs:
   hello_world_job:
     runs-on: ubuntu-latest
     name: A job to say hello
+    container:
+      image: archlinux-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: arch linux create user
-        uses: archlinux-latest
-        run: useradd -m archie
-      - name: arch linux create user
-        uses: archlinux-latest
-        run: cat /etc/passwd
+      - name: setup user
+        run: |
+          useradd runner
+          mkdir /home/runner
+          chown runner:runner /home/runner
+          echo "runner ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+      - name: create package
+        user: runner
+        workdir: /home/runner
+        run: |
 
 
